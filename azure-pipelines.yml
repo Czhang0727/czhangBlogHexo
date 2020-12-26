@@ -1,0 +1,42 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '14.x'
+  displayName: 'Install Node.js'
+- task: DownloadSecureFile@1
+  inputs:
+    secureFile: 'keys'
+
+- script: |
+    npm install hexo-cli -g
+    yarn install
+    mkdir ~/.ssh && mv $DOWNLOADSECUREFILE_SECUREFILEPATH ~/.ssh/id_rsa
+    chmod 700 ~/.ssh && chmod 600 ~/.ssh/id_rsa
+    ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+    mkdir deploy
+    hexo g
+    cd deploy
+    git init
+    git config --global user.email "czhang0727@gmail.com"
+    git config --global user.name "ADO Deployment Agent"
+    git remote add origin git@github.com:Czhang0727/czhang0727.github.io.git
+    git fetch origin
+    git checkout master
+    git branch --set-upstream-to=origin/master master
+    git pull
+    git add --all
+    git commit --allow-empty -m "CI/Deploy From Azure Pipeline"
+    git push origin master
+
+  displayName: 'deploy hexo'
