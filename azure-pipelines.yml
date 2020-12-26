@@ -27,7 +27,7 @@ steps:
     hexo g
     echo "-----------"
     echo $github_access_token
-    ls -l
+    ls -l public/
     mkdir deploy
     cd deploy
     git init
