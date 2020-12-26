@@ -35,7 +35,8 @@ steps:
     git checkout master
     git branch --set-upstream-to=origin/master master
     git pull
-    yes | cp -rf ../public/* ../deploy
+    yes | cp -rf ../public/* ../deploy/
+    ls -la
     git add --all
     git commit --allow-empty -m "CI/Deploy From Azure Pipeline"
     git push origin master
