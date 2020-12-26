@@ -24,8 +24,10 @@ steps:
     mkdir ~/.ssh && mv $DOWNLOADSECUREFILE_SECUREFILEPATH ~/.ssh/id_rsa
     chmod 700 ~/.ssh && chmod 600 ~/.ssh/id_rsa
     ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-    mkdir deploy
     hexo g
+    echo "-----------"
+    ls -l
+    mkdir deploy
     cd deploy
     git init
     git config --global user.email "czhang0727@gmail.com"
@@ -35,6 +37,8 @@ steps:
     git checkout master
     git branch --set-upstream-to=origin/master master
     git pull
+    yes | rm -rf ./*
+    yes | cp -rf ../public/* ./
     git add --all
     git commit --allow-empty -m "CI/Deploy From Azure Pipeline"
     git push origin master
