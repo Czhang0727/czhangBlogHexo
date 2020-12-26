@@ -26,7 +26,8 @@ steps:
     ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
     hexo g
     echo "-----------"
-    ls -l
+    echo $github_access_token
+    ls -l public/
     mkdir deploy
     cd deploy
     git init
