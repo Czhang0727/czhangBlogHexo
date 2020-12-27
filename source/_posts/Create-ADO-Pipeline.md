@@ -3,6 +3,9 @@ layout: post
 title: 给Hexo建立CICD Pipeline
 date: 2020-12-27 09:39:57
 tags:
+  - tech-blog
+categories:
+  - tech-blog
 ---
 
 上次久违的写了博客以后，发现每次需要手动更新 Github Page 有点心累，就开始折腾 CICD，为了给 Github 东家打个广告，我决定原生 Azure Devops Pipeline 来一套。
