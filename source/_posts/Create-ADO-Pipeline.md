@@ -3,7 +3,8 @@ layout: post
 title: 给Hexo建立CICD Pipeline
 date: 2020-12-27 09:39:57
 tags:
-  - tech-blog
+  - 技术博客
+  - 杂
 categories:
   - tech-blog
 ---

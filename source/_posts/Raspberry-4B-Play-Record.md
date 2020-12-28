@@ -3,7 +3,8 @@ layout: post
 title: 树莓派4B 玩耍记录 （1）
 date: 2020-12-24
 tags:
-  - tech-blog
+  - 技术博客
+  - 树莓派
 categories:
   - tech-blog
 ---
